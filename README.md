@@ -11,7 +11,8 @@ Esse é um projeto pessoal para prática de programação, um site para gerencia
 Se de alguma maneira esse projeto chegar nas mãos de alguém interessado em usar profissionalmente, entre em contato no e-mail 𝗴𝘂𝘀𝘁𝗮𝘃𝗼𝗽𝗹.𝗰𝗼𝗻𝘁𝗮𝘁𝗼@𝗴𝗺𝗮𝗶𝗹.𝗰𝗼𝗺
 
 
-
+ㅤ
+ㅤ
 
 ⁡⁢⁣⁢​‌‍‌[𝗘𝗡]⁡​
 
