@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
                     <div class="gap-2 d-inline-flex flex-column">
                         <input type="text" name="nome" id="" required placeholder="Nome do garçom">
                         <span>Foto de perfil do garçom:</span>
-                        <input type="file" name="foto" required>
+                        <input type="file" name="foto" required accept="image/*">
                         <input type="submit" name="submit">
                     </div>
                 </div>

@@ -3,9 +3,13 @@ body {
   padding: 0;
   height: 100vh;
 
-  background-image: url(media/background.png);
-  background-position: center;
+  background-color: rgb(175, 175, 175);
+
+  /* background-image: url(media/background.png);
   background-size: cover;
+  background-position: center; */
+
+  /* overflow-y: hidden; */
 }
 
 /* classe para a caixa principal do index */
@@ -32,4 +36,36 @@ body {
   width: 380px;
   background-color: #f3f3f3e3;
   border-radius: 10%;
+}
+
+/* Classe para caixa de seleção de perfil dos garçons WAITER-LOGIN.PHP */
+.grcm-profile-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  justify-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 900px;
+
+  /* background-color: black; */
+}
+
+.grcm-profile-login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.grcm-profile-login span {
+  font-size: large;
+  font-weight: 500;
+  background-color: white;
+  max-width: 300px;
+}
+
+.grcm-profile-login img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
 }

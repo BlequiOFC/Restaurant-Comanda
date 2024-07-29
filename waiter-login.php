@@ -3,7 +3,7 @@
 
 
 // Essa parte trás o script do connection.php para fazer a conexão com o BD nesse arquivo
-include_once ("connection.php");
+include_once "connection.php";
 
 
 // Testa a conexão
@@ -12,17 +12,16 @@ if ($dbConnection->connect_error) {
 }
 
 
+
+
+
 // Armazena a linha de código do SQL na variavel $selectGarcons
 $selectGarcons = "SELECT id_garcom, nm_garcom, ft_garcom FROM garcoms";
 
 // Armazena os dados obtidos atráves do código armazenado em selectGarcons
-$dadosGarcons = $dbConnection->query($selectGarcons);
+$dadosGarcons = mysqli_query($dbConnection, $selectGarcons);
 
 ?>
-
-
-
-
 
 
 
@@ -56,33 +55,30 @@ $dadosGarcons = $dbConnection->query($selectGarcons);
 
 
         <div>
+            <div class="grcm-profile-box">
 
-        <?php
-        
-        
-        if ($dadosGarcons->num_rows > 0) {
+                <?php
+                while ($row = mysqli_fetch_array($dadosGarcons)) {
 
-            while($row = $dadosGarcons->fetch_assoc()) {
+                    $garcomPfpWhile = $row['ft_garcom'];
 
-                echo $row["nm_garcom"] ;
-            
-        
-        } ; }
+                    // <img src=' . $row['ft_garcom'] . '.png>
+                    echo '<div class="grcm-profile-login">
+                <img src="data:image/png;base64,' . base64_encode($garcomPfpWhile) . '" alt=' . $row['nm_garcom'] . ' />
+                 <span> ' . $row['nm_garcom'] . ' </span>
+                </div>';
 
-        $dbConnection->close();
+                }
+                ;
 
+                $dbConnection->close();
 
-
-
-
-
-
-        
-        ?>
+                ?>
 
 
+
+            </div>
         </div>
-
     </div>
 
 
