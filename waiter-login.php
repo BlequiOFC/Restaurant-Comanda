@@ -16,7 +16,7 @@ if ($dbConnection->connect_error) {
 
 
 // Armazena a linha de código do SQL na variavel $selectGarcons
-$selectGarcons = "SELECT id_garcom, nm_garcom, ft_garcom FROM garcoms";
+$selectGarcons = "SELECT id_garcom, nm_garcom, ft_garcom FROM tb_garcoms";
 
 // Armazena os dados obtidos atráves do código armazenado em selectGarcons
 $dadosGarcons = mysqli_query($dbConnection, $selectGarcons);
@@ -48,36 +48,51 @@ $dadosGarcons = mysqli_query($dbConnection, $selectGarcons);
 
 
 <body>
-    <a href="index.php">index</a>
+    <a href="index.html">index</a>
+    <br><br><br>
+    <div class=" d-flex justify-content-center align-items-center">
+        <h2>Escolha seu perfil</h2>
+    </div>
 
-
-    <div class="container h-100 d-flex justify-content-center align-items-center">
+    <div class="container h-75 d-flex justify-content-center align-items-center">
 
 
         <div>
             <div class="grcm-profile-box">
 
                 <?php
-                while ($row = mysqli_fetch_array($dadosGarcons)) {
 
-                    $garcomPfpWhile = $row['ft_garcom'];
+                if (mysqli_num_rows($dadosGarcons) == !null) {
 
-                    // <img src=' . $row['ft_garcom'] . '.png>
-                    echo '<div class="grcm-profile-login">
-                <img src="data:image/png;base64,' . base64_encode($garcomPfpWhile) . '" alt=' . $row['nm_garcom'] . ' />
-                 <span> ' . $row['nm_garcom'] . ' </span>
-                </div>';
 
+                    while ($row = mysqli_fetch_array($dadosGarcons)) {
+
+                        $garcomPfpWhile = $row['ft_garcom'];
+                        $idGarcomWhile = $row['id_garcom'];
+
+                        echo "<a href=\"register-orders.php?id=$idGarcomWhile\">";
+                        echo '<div class="grcm-profile-login">';
+                        echo '<img src="data:image/png;base64,' . base64_encode($garcomPfpWhile) . '" alt=' . $row['nm_garcom'] . ' /> ';
+                        echo '<span> ' . $row['nm_garcom'] . ' </span>';
+                        echo '</div>';
+                        echo '</a>';
+
+                    }
+                    ;
                 }
-                ;
-
-                $dbConnection->close();
 
                 ?>
 
-
-
             </div>
+
+            <?php
+
+            if (mysqli_num_rows($dadosGarcons) == null)
+                echo '<h1>Sem Garçons Registrados</h1>';
+            $dbConnection->close()
+
+                ?>
+
         </div>
     </div>
 

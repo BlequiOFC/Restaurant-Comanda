@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
     // Cria a instrução para executar o código SQL para armazenar os dados no banco, com
     // o placeholder "?" nos valores, para que seja alterado pelo bind_param com os
     // valores das variaveis.
-    $stmt = $dbConnection->prepare("INSERT INTO garcoms (nm_garcom, ft_garcom) VALUES (?, ?) ");
+    $stmt = $dbConnection->prepare("INSERT INTO tb_garcoms (nm_garcom, ft_garcom) VALUES (?, ?) ");
 
     // Verificação adicional para ver se o prepare() funcionou
     if ($stmt === false) {
@@ -59,6 +59,17 @@ if (isset($_POST['submit'])) {
 
 }
 
+
+
+
+include_once "connection.php";
+
+// Armazena a linha de código do SQL na variavel $selectGarcons
+$selectGarcons = "SELECT id_garcom, nm_garcom, ft_garcom FROM tb_garcoms";
+
+// Armazena os dados obtidos atráves do código armazenado em selectGarcons
+$dadosGarcons = mysqli_query($dbConnection, $selectGarcons);
+
 ?>
 
 
@@ -84,33 +95,47 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-    <a href="index.php">index</a>
+    <a href="index.html">index</a>
     <br><br>
 
     <div class="container h-75">
 
-
-        <div class="reg-grcm-box-admin">
-            <form action="admin.php" method="post" enctype="multipart/form-data">
-                <div style="margin:20px";>
-                    <br>
-                    <h2>Registrar garçom</h2>
-                    <div class="gap-2 d-inline-flex flex-column">
-                        <input type="text" name="nome" id="" required placeholder="Nome do garçom">
-                        <span>Foto de perfil do garçom:</span>
-                        <input type="file" name="foto" required accept="image/*">
-                        <input type="submit" name="submit">
-                    </div>
-                </div>
-            </form>
-        </div>
-
         <div>
 
-            
+            <div class="reg-grcm-box-admin">
+                <form action="admin.php" method="post" enctype="multipart/form-data">
+                    <div style="margin:20px" ;>
+                        <br>
+                        <h2>Registrar garçom</h2>
+                        <div class="gap-2 d-inline-flex flex-column">
+                            <input type="text" name="nome" id="" required placeholder="Nome do garçom">
+                            <span>Foto de perfil do garçom:</span>
+                            <input type="file" name="foto" required accept="image/*">
+                            <input type="submit" name="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br> <h3>Garçons Registrados</h3>
+            <div class="grcm-list-admin">
+
+                <?php
+
+                while ($row = mysqli_fetch_array($dadosGarcons)) {
+
+                echo '<div class="perfil-grcm-lista-admin">';
+                echo '    <img src="data:image/png;base64,'. base64_encode($row['ft_garcom']) .'" alt="">';
+                echo '    <p> ID: '. $row['id_garcom'] .' - ' . $row['nm_garcom'] .'</p>';
+                echo '    <a href=""><img class="trash-icon-admin" src="media/trash-icon.svg" alt=""></a>';
+                echo '</div>';
+
+                }
+                ?>
+
+
+            </div>
 
         </div>
-
 
 
     </div>

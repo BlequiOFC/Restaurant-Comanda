@@ -3,13 +3,13 @@ body {
   padding: 0;
   height: 100vh;
 
-  background-color: rgb(175, 175, 175);
+  /* background-color: rgb(175, 175, 175); */
 
-  /* background-image: url(media/background.png);
+  background-image: url(media/background.png);
   background-size: cover;
-  background-position: center; */
+  background-position: center;
 
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
 /* classe para a caixa principal do index */
@@ -41,12 +41,12 @@ body {
 /* Classe para caixa de seleção de perfil dos garçons WAITER-LOGIN.PHP */
 .grcm-profile-box {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
   justify-items: center;
   justify-content: center;
   width: 700px;
-  height: 900px;
+  height: auto;
 
   /* background-color: black; */
 }
@@ -65,7 +65,66 @@ body {
 }
 
 .grcm-profile-login img {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
+}
+
+.grcm-list-admin {
+  height: 400px;
+  width: 400px;
+  background-color: #f3f3f3e3;
+  /* border-radius: 5%; */
+  overflow-y: scroll;
+}
+
+.grcm-list-admin img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.perfil-grcm-lista-admin {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grcm-list-admin a img {
+  width: 50px;
+  height: auto;
+}
+
+/*  */
+
+/*  */
+
+/*  */
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* 
+
+
+
+
+*/
+
+.input-form-pedidos {
+  height: 40px;
+  width: 250px;
+  font-size: 20px;
+  border: solid 1px black;
 }
